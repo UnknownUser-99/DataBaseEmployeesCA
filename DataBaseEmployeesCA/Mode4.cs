@@ -41,7 +41,7 @@ namespace DataBaseEmployeesCA
                 for (int i = 0; i < TotalRecords; i++)
                 {
                     var gender = genderRandom.Next(2) == 0 ? "male" : "female";
-                    var fullName = $"{faker.Name.LastName()} {(gender == "male" ? faker.Name.FirstName(Bogus.DataSets.Name.Gender.Male) : faker.Name.FirstName(Bogus.DataSets.Name.Gender.Female))}";
+                    var fullName = $"{faker.Name.LastName()} {(gender == "male" ? faker.Name.FirstName(Bogus.DataSets.Name.Gender.Male) : faker.Name.FirstName(Bogus.DataSets.Name.Gender.Female))} {faker.Name.FirstName(Bogus.DataSets.Name.Gender.Male)}";
                     var birthDate = faker.Date.Between(new DateTime(1950, 1, 1), new DateTime(2000, 12, 31)).ToString("yyyy-MM-dd");
 
                     EmployeesRandom[i] = new Employee(fullName, birthDate, gender);
@@ -69,7 +69,8 @@ namespace DataBaseEmployeesCA
                     }
 
                     var firstName = faker.Name.FirstName(Bogus.DataSets.Name.Gender.Male);
-                    var fullName = $"{lastName} {firstName}";
+                    var middleName = faker.Name.FirstName(Bogus.DataSets.Name.Gender.Male);
+                    var fullName = $"{lastName} {firstName} {middleName}";
                     var birthDate = faker.Date.Between(new DateTime(1950, 1, 1), new DateTime(2000, 12, 31)).ToString("yyyy-MM-dd");
 
                     EmployeesSpecial[i] = new Employee(fullName, birthDate, "male");
